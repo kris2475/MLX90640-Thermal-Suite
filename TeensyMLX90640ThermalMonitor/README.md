@@ -4,18 +4,6 @@ A professional embedded firmware suite designed for the **Teensy 3.5** and the *
 
 ---
 
-## Contents
-
-1. [Executive Summary](#executive-summary)
-2. [Key Features](#key-features)
-3. [Hardware Requirements](#hardware-requirements)
-4. [Pin Connections](#pin-connections)
-5. [Software Dependencies](#software-dependencies)
-6. [Adaptive ML Anomaly Engine](#adaptive-ml-anomaly-engine)
-7. [Embedded Firmware Source](#embedded-firmware-source)
-
----
-
 ## Executive Summary
 
 This firmware bridges low-level hardware sensing with automated intelligence. Upon boot, the Teensy automatically scans the I2C bus for an OLED display, syncs time via its hardware RTC, initializes the built-in micro-SD card for batch logging, and fires up the MLX90640 infrared sensor. 
@@ -32,6 +20,19 @@ The system operates across three distinct machine learning phases—**Warmup**, 
 * **Dual-View OLED Interface:** Rotates automatically between a downsampled 16x12 live thermal block preview and live machine learning metrics.
 * **Hardware RTC Integration:** Timestamps all logged events accurately utilizing the Teensy 3.5 onboard RTC.
 
+---
+## Adaptive ML Anomaly Engine & Welford's Algorithm
+
+The firmware implements an edge-based machine learning pipeline that monitors thermal environments without hardcoded safety thresholds[cite: 5]. It operates through a three-stage state machine[cite: 5]:
+
+1. **Warmup (`5s`):** Stabilizes sensor readings and internal thermal bias upon boot[cite: 5].
+2. **Baseline Learning (`60s`):** Uses **Welford's streaming algorithm** (`updateWelfordStats`) to compute online running means (`meanMaxT`, `meanAvgT`) and sum of squared differences (`M2MaxT`, `M2AvgT`) frame-by-frame. This memory-efficient approach calculates exact variances without needing to store historical arrays in RAM[cite: 5].
+3. **Active Monitoring:** Continuously computes Z-scores (`zMax`, `zAvg`) against an **Exponentially Weighted Moving Average (EWMA)** sliding distribution (`EWMA_ALPHA = 0.02f`)[cite: 5]. 
+
+### Anomaly Detection & SD Logging
+* **Consecutive Debouncing:** Requires a raw anomaly score ($\sqrt{z_{max}^2 + z_{avg}^2} > 3.5$) for two consecutive frames to confirm an event, avoiding false positives[cite: 5].
+* **Burst-Mode Diagnostics:** Triggers a 30-second high-frequency logging window upon event detection[cite: 5].
+* **SD Card Batch Logging:** Collects telemetry metrics (`DateTime`, `MaxTemp`, `MinTemp`, `AvgTemp`, `AnomalyScore`, `Event`) in a RAM buffer (`BUFFER_SIZE = 20`) and flushes them to `thermal_ml_log.csv` on the built-in micro-SD card every 10 minutes or instantly during burst events[cite: 5].
 ---
 
 ## Hardware Requirements
