@@ -46,7 +46,7 @@ The firmware implements an edge-based machine learning pipeline that monitors th
 
 * 
 ### Anomaly Detection & SD Logging
-* **Consecutive Debouncing:** Requires a raw anomaly score ($\sqrt{z_{max}^2 + z_{avg}^2}  > 3.5$) $\sqrt{z_{\text{max}}^2 + z_{\text{avg}}^2} > 3.5$ for two consecutive frames to confirm an event, avoiding false positives.
+* **Consecutive Debouncing:** Requires a raw anomaly score ($\sqrt{z_{max}^2 + z_{avg}^2}  > 3.5$) `sqrt(z_max^2 + z_avg^2) > 3.5` for two consecutive frames to confirm an event, avoiding false positives.
 * **Burst-Mode Diagnostics:** Triggers a 30-second high-frequency logging window upon event detection.
 * **SD Card Batch Logging:** Collects telemetry metrics (`DateTime`, `MaxTemp`, `MinTemp`, `AvgTemp`, `AnomalyScore`, `Event`) in a RAM buffer (`BUFFER_SIZE = 20`) and flushes them to `thermal_ml_log.csv` on the built-in micro-SD card every 10 minutes or instantly during burst events.
 ---
