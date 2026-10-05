@@ -20,6 +20,16 @@ The system operates across three distinct machine learning phases—**Warmup**, 
 * **Dual-View OLED Interface:** Rotates automatically between a downsampled 16x12 live thermal block preview and live machine learning metrics.
 * **Hardware RTC Integration:** Timestamps all logged events accurately utilizing the Teensy 3.5 onboard RTC.
 
+  ## Standalone Edge ML IoT Architecture
+
+Designed to operate entirely **standalone** without requiring a host computer for core intelligence, the Teensy 3.5 firmware acts as an autonomous IoT monitoring node[cite: 5]. By combining local hardware sensing, edge machine learning, and onboard persistent storage, it functions independently in remote or mission-critical environments:
+
+* **Autonomous Operation:** Runs untethered, relying on its onboard hardware Real-Time Clock (RTC) to maintain precise timestamps and local micro-SD storage for persistent event tracking[cite: 5].
+* **Edge Intelligence:** Evaluates thermal frames locally in real-time, completely bypassing the need for cloud connectivity or external computing power for anomaly detection[cite: 5].
+* **Optional Hybrid Telemetry:** While fully standalone, it retains high-speed serial streaming capabilities to interface with companion Python GUI applications when live desktop visualization is desired[cite: 5].
+
+---
+
 ---
 ## Adaptive ML Anomaly Engine & Welford's Algorithm
 
