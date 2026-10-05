@@ -19,7 +19,7 @@ A professional, high-performance Python & Tkinter GUI suite built for real-time 
 ![Main Dashboard UI](TeensyMLX90640Thermal/Screenshot 2026-10-05 081406.gif)
 
 ### Overheat Alarm Triggered
-![Overheat Alarm](TeensyMLX90640Thermal/screenshot_alarm.png)
+![Overheat Alarm](TeensyMLX90640Thermal/Screenshot 2026-10-05 080833.gif)
 
 ### Exported Snapshot Example
 ![Thermal Snapshot](TeensyMLX90640Thermal/thermal_pro_20261005_081423.png)
