@@ -37,8 +37,14 @@ The firmware implements an edge-based machine learning pipeline that monitors th
 
 1. **Warmup (`5s`):** Stabilises sensor readings and internal thermal bias upon boot.
 2. **Baseline Learning (`60s`):** Uses **Welford's streaming algorithm** (`updateWelfordStats`) to compute online running means (`meanMaxT`, `meanAvgT`) and sum of squared differences (`M2MaxT`, `M2AvgT`) frame-by-frame. This memory-efficient approach calculates exact variances without needing to store historical arrays in RAM.
-3. **Active Monitoring:** Continuously computes Z-scores (`zMax`, `zAvg`) against an **Exponentially Weighted Moving Average (EWMA)** sliding distribution (`EWMA_ALPHA = 0.02f`). 
+3.  **Active Monitoring:** Continuously computes Z-scores (`zMax`, `zAvg`) against an **Exponentially Weighted Moving Average (EWMA)** sliding distribution (`EWMA_ALPHA = 0.02f`). 
 
+ ## How Welford's Algorithm Works & Why It Matters
+* **The Problem:** Traditionally, calculating statistical variance requires storing an entire history of data points in memory to subtract them from the mean later. On microcontrollers with limited RAM (like the Teensy 3.5), holding historical arrays of thermal frames causes memory overflow.
+* **The Solution:** Welford's algorithm is a brilliant **online (streaming) algorithm** that computes the running mean and variance incrementally *as each new data point arrives*. 
+* **Why It Works:** It mathematically tracks a running delta between each new value and the current mean, updating the aggregate sum of squared differences (`M2`) on the fly. This allows the Teensy to calculate **exact** mathematical variances using a tiny, constant memory footprint ($O(1)$ complexity) without ever needing to store past frames.
+
+* 
 ### Anomaly Detection & SD Logging
 * **Consecutive Debouncing:** Requires a raw anomaly score ($\sqrt{z_{max}^2 + z_{avg}^2}  > 3.5$) for two consecutive frames to confirm an event, avoiding false positives.
 * **Burst-Mode Diagnostics:** Triggers a 30-second high-frequency logging window upon event detection.
