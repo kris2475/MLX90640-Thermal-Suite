@@ -2,6 +2,22 @@
 
 A professional, high-performance Python & Tkinter GUI suite built for real-time thermal data acquisition and visualisation using the **MLX90640 32x24 IR array** driven by a **Teensy** microcontroller. 
 
+
+## Executive Summary
+
+The **MLX90640 Thermal Suite** is a high-performance desktop telemetry and visualisation application engineered to bridge hardware-level infrared sensing with advanced software analytics. Designed specifically for low-latency serial communication with a Teensy microcontroller running an **MLX90640 32x24 IR sensor array**, this suite transforms raw temperature matrices into smooth, interpolated thermal heatmaps coupled with real-time statistical tracking[cite: 3, 4]. 
+
+Built with reliability and performance in mind, it features multi-threaded serial reading to prevent UI stutter, live computer vision modes (edge detection and contour mapping)[cite: 3, 4], automated safety threshold alarms[cite: 3], and comprehensive data logging capabilities[cite: 2, 3, 4]. Whether used for benchtop electronic diagnostics or environmental monitoring, it provides an intuitive, robust interface for thermal analysis.
+
+---
+
+## Primary Use Cases
+
+* **Electronic Component Diagnostics:** Identify localized overheating, short circuits, or thermal runaway on PCBs and microcontrollers by monitoring precise hotspot coordinates[cite: 3, 4].
+* **Thermal Testing & Prototyping:** Log continuous time-series frame telemetry to CSV files for post-run analysis, thermal dissipation testing, and stress evaluations[cite: 2, 3, 4].
+* **Safety & Overheat Monitoring:** Set custom alarm thresholds with real-time visual flash triggers to automate safety monitoring during high-temperature operations[cite: 3].
+* **Embedded Systems Development:** Serve as a reliable, ready-to-deploy GUI host for custom Teensy-driven sensor nodes streaming high-frequency telemetry over serial.
+
 ## Features
 
 * **Live Bicubic Interpolation & Heatmaps:** Smooth, high-resolution visual feedback with customisable colormaps (`inferno`, `plasma`, `magma`, `turbo`, `jet`, `coolwarm`).
