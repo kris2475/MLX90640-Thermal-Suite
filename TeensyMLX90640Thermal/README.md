@@ -32,13 +32,13 @@ Built with reliability and performance in mind, it features multi-threaded seria
 ## Screenshots
 
 ### Main Dashboard (Normal Status)
-![Main Dashboard UI](TeensyMLX90640Thermal/Dash_Norm.gif)
+![Main Dashboard UI](Dash_Norm.gif)
 
 ### Overheat Alarm Triggered
-![Overheat Alarm](TeensyMLX90640Thermal/Dash_Alarm.gif)
+![Overheat Alarm](Dash_Alarm.gif)
 
 ### Exported Snapshot Example
-![Thermal Snapshot](TeensyMLX90640Thermal/thermal_pro_20261005_081423.png)
+![Thermal Snapshot](thermal_pro_20261005_081423.png)
 
 ---
 
