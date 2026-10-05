@@ -16,7 +16,7 @@ A professional, high-performance Python & Tkinter GUI suite built for real-time 
 ## Screenshots
 
 ### Main Dashboard (Normal Status)
-![Main Dashboard UI](TeensyMLX90640Thermal/screenshot_normal.png)
+![Main Dashboard UI](TeensyMLX90640Thermal/Screenshot 2026-10-05 081406.gif)
 
 ### Overheat Alarm Triggered
 ![Overheat Alarm](TeensyMLX90640Thermal/screenshot_alarm.png)
