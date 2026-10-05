@@ -49,6 +49,18 @@ Built with reliability and performance in mind, it features multi-threaded seria
 
 ---
 
+### Pin Connections (Teensy 3.5 to MLX90640)
+
+| MLX90640 Pin | Function | Teensy 3.5 Pin | Notes |
+| :--- | :--- | :--- | :--- |
+| **VIN / VCC** | Power Supply | **3.3V** | Must be connected to 3.3V (do **not** connect to 5V). |
+| **GND** | Ground | **GND** | Standard ground pin. |
+| **SDA** | I2C Data | **Pin 18 (SDA0)** | Primary I2C data line for `Wire`. |
+| **SCL** | I2C Clock | **Pin 19 (SCL0)** | Primary I2C clock line for `Wire`. |
+
+---
+---
+
 ## Software Prerequisites
 
 Ensure you have Python 3.8+ installed along with the required libraries:
