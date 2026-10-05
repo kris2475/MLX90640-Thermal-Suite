@@ -6,9 +6,9 @@ A professional embedded firmware suite designed for the **Teensy 3.5** and the *
 
 ## Executive Summary
 
-This firmware bridges low-level hardware sensing with automated intelligence. Upon boot, the Teensy automatically scans the I2C bus for an OLED display, syncs time via its hardware RTC, initializes the built-in micro-SD card for batch logging, and fires up the MLX90640 infrared sensor. 
+This firmware bridges low-level hardware sensing with automated intelligence. Upon boot, the Teensy automatically scans the I2C bus for an OLED display, syncs time via its hardware RTC, initialises the built-in micro-SD card for batch logging, and fires up the MLX90640 infrared sensor. 
 
-The system operates across three distinct machine learning phases—**Warmup**, **Baseline Learning**, and **Active Adaptive Monitoring**—using Welford's streaming algorithm and Exponentially Weighted Moving Averages (EWMA) to detect thermal anomalies in real time without manual threshold configuration.
+The system operates across three distinct machine learning phases—**Warmup**, **Baseline Learning**, and **Active Adaptive Monitoring** - using Welford's streaming algorithm and Exponentially Weighted Moving Averages (EWMA) to detect thermal anomalies in real time without manual threshold configuration.
 
 ---
 
