@@ -35,7 +35,7 @@ Designed to operate entirely **standalone** without requiring a host computer fo
 
 The firmware implements an edge-based machine learning pipeline that monitors thermal environments without hardcoded safety thresholds. It operates through a three-stage state machine:
 
-1. **Warmup (`5s`):** Stabilizes sensor readings and internal thermal bias upon boot.
+1. **Warmup (`5s`):** Stabilises sensor readings and internal thermal bias upon boot.
 2. **Baseline Learning (`60s`):** Uses **Welford's streaming algorithm** (`updateWelfordStats`) to compute online running means (`meanMaxT`, `meanAvgT`) and sum of squared differences (`M2MaxT`, `M2AvgT`) frame-by-frame. This memory-efficient approach calculates exact variances without needing to store historical arrays in RAM.
 3. **Active Monitoring:** Continuously computes Z-scores (`zMax`, `zAvg`) against an **Exponentially Weighted Moving Average (EWMA)** sliding distribution (`EWMA_ALPHA = 0.02f`). 
 
